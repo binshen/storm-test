@@ -43,4 +43,11 @@ public class ReportBolt extends BaseRichBolt {
         }
         log.info("--------------------------end---------------------");
     }
+
+    @Override
+    public void cleanup() {
+        super.cleanup();
+
+        //集群运行时，此处不一定会被执行到
+    }
 }
