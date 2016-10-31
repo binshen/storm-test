@@ -14,6 +14,7 @@ public class SplitSentenceBolt extends BaseRichBolt {
 
     private OutputCollector outputCollector;
 
+    //初始化
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         this.outputCollector = outputCollector;
     }
@@ -22,7 +23,7 @@ public class SplitSentenceBolt extends BaseRichBolt {
         String sentence = tuple.getStringByField("sentences");
         String[] words = sentence.split(" ");
         for(String word : words){
-            outputCollector.emit(new Values(word));
+            this.outputCollector.emit(new Values(word));
         }
     }
 

@@ -21,7 +21,7 @@ public class SentenceSpout extends BaseRichSpout{
             " A topology is a graph of spouts and bolts that are connected with stream groupings"
     };
 
-    private int index=0;
+    private int index = 0;
 
     //初始化操作
     public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) {
@@ -30,10 +30,10 @@ public class SentenceSpout extends BaseRichSpout{
 
     //核心逻辑
     public void nextTuple() {
-        spoutOutputCollector.emit(new Values(sentences[index]));
-        ++index;
-        if(index>=sentences.length){
-            index=0;
+        this.spoutOutputCollector.emit(new Values(sentences[index]));
+        index++;
+        if(index >= sentences.length){
+            index = 0;
         }
     }
 

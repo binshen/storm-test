@@ -20,7 +20,7 @@ public class WordCountBolt extends BaseRichBolt{
 
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         this.outputCollector = outputCollector;
-        wordCount = new HashMap<String, Long>();
+        this.wordCount = new HashMap<String, Long>();
     }
 
     public void execute(Tuple tuple) {
@@ -29,9 +29,9 @@ public class WordCountBolt extends BaseRichBolt{
         if(count == null){
             count = 0L;
         }
-        ++count;
-        wordCount.put(word,count);
-        outputCollector.emit(new Values(word,count));
+        count++;
+        this.wordCount.put(word,count);
+        this.outputCollector.emit(new Values(word,count));
     }
 
 
